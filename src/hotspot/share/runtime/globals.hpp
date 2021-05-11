@@ -428,6 +428,11 @@ const intx ObjectAlignmentInBytes = 8;
           "Delay in milliseconds for option AbortVMOnVMOperationTimeout")   \
           range(0, max_intx)                                                \
                                                                             \
+  /* DEREK: TMP TEST */                                                      \
+  product(intx, SafepointSlowdown, 0,                                       \
+          "Add extra delay (ms) to safepoints ")                            \
+          range(0, 999)                                                     \
+                                                                            \
   /* 50 retries * (5 * current_retry_count) millis = ~6.375 seconds */      \
   /* typically, at most a few retries are needed                    */      \
   product(intx, SuspendRetryCount, 50,                                      \

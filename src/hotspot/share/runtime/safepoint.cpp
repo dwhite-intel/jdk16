@@ -489,6 +489,13 @@ void SafepointSynchronize::end() {
   EventSafepointEnd event;
   assert(Thread::current()->is_VM_thread(), "Only VM thread can execute a safepoint");
 
+  if (SafepointSlowdown != 0) {
+    log_info(safepoint)(
+      "Intentionally slowing safepoint by : " JLONG_FORMAT " ms"
+       SafepointSlowdown
+     );
+    os::naked_short_sleep(SafepointSlowdown);
+  }
   disarm_safepoint();
 
   Universe::heap()->safepoint_synchronize_end();
