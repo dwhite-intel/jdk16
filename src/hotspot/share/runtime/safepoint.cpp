@@ -491,7 +491,7 @@ void SafepointSynchronize::end() {
 
   if (SafepointSlowdown != 0) {
     log_info(safepoint)(
-      "Intentionally slowing safepoint by : " JLONG_FORMAT " ms"
+      "Intentionally slowing safepoint by : " INTX_FORMAT "ms",
        SafepointSlowdown
      );
     os::naked_short_sleep(SafepointSlowdown);
